@@ -399,7 +399,7 @@ local function on_timer(pos, elapsed)
 						end
 					end
 
-					local tool_res = tinkering.create_tool(tool_type_, comp_repl, true, nil, {wear = tool:get_wear()})
+					local tool_res = tinkering.create_tool(tool_type_, comp_repl, true, nil, {wear = tool:get_wear(), initial_metadata = tool:get_meta():to_table()})
 					if tool_res then
 						output = tool_res
 					end
@@ -422,7 +422,7 @@ local function on_timer(pos, elapsed)
 							new_wear = 0
 						end
 
-						local tool_res = tinkering.create_tool(tool_type_, materials, true, nil, {wear = new_wear})
+						local tool_res = tinkering.create_tool(tool_type_, materials, true, nil, {wear = new_wear, initial_metadata = tool:get_meta():to_table()})
 						if tool_res then
 							output = tool_res
 						end

@@ -362,6 +362,12 @@ function tinkering.create_tool(tool_type, materials, want_tool, custom_name, ove
 	-- Create a new tool instance and apply metadata
 	local tool = ItemStack(internal_name)
 	local meta = tool:get_meta()
+
+	if tool_def["initial_metadata"] then
+		-- For the mods that add additional fields to tool metadata, e. g. toolranks
+		meta:from_table(tool_def.initial_metadata)
+	end
+
 	meta:set_string("description", description)
 	meta:set_string("texture_string", tool_def.inventory_image) -- NOT IMPLEMENTED YET!
 	meta:set_tool_capabilities(tool_def.tool_capabilities)
